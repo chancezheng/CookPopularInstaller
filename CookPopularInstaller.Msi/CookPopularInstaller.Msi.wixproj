@@ -6,9 +6,9 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>0a1f5cb2-364b-4345-9dd0-077aeb357413</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>DesktopInstaller.Msi</OutputName>
+    <OutputName>CookPopularInstaller</OutputName>
     <OutputType>Package</OutputType>
-    <Name>DesktopInstaller.Msi</Name>
+    <Name>CookPopularInstaller.Msi</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -23,8 +23,8 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CookPopularInstaller\CookPopularInstaller.csproj">
-      <Name>CookPopularInstaller</Name>
+    <ProjectReference Include="..\CookPopularInstallerUI\CookPopularInstallerUI.csproj">
+      <Name>CookPopularInstallerUI</Name>
       <Project>{f6688334-ad3b-448a-b851-7db4f585e09b}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>

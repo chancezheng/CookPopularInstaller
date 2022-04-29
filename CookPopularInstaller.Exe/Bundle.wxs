@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Bundle Name="CookPopularInstaller" Version="1.0.0.0" Manufacturer="CookCSharp" UpgradeCode="e313975f-94c9-44f5-ad25-1e26effcfa1e">
+	<!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+	  <bal:WixStandardBootstrapperApplication LicenseFile="" LicenseUrl="" ThemeFile="" LogoFile=""/>	
+	</BootstrapperApplicationRef>-->
+	
+	<WixVariable Id="WixMbaPrereqPackageId" Value=""/>
+	<WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
+	<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+	  <Payload Name="BootstrapperCore.config" SourceFile="$(var.CookPopularInstallerUI.TargetDir)\$(var.CookPopularInstallerUI.TargetFileName).config"/>
+	  <Payload SourceFile="$(var.CookPopularInstallerUI.TargetPath)" />
+	</BootstrapperApplicationRef>
+
+
+	<Chain>
+	  <!-- TODO: Define the list of chained packages. -->
+	  <!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
+	  <!--<PackageGroupRef Id="NetFx40Redist"/>-->
+	  <MsiPackage Compressed="yes" SourceFile="$(var.CookPopularInstaller.Msi.TargetPath)" DisplayInternalUI="yes" ForcePerMachine="yes"/>
+	</Chain>
+  </Bundle>
+</Wix>

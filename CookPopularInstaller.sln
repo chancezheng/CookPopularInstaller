@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookPopularInstaller", "CookPopularInstaller\CookPopularInstaller.csproj", "{F6688334-AD3B-448A-B851-7DB4F585E09B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookPopularInstallerUI", "CookPopularInstallerUI\CookPopularInstallerUI.csproj", "{F6688334-AD3B-448A-B851-7DB4F585E09B}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DesktopInstaller.Msi", "DesktopInstaller.MSI\DesktopInstaller.Msi.wixproj", "{0A1F5CB2-364B-4345-9DD0-077AEB357413}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "CookPopularInstaller.Msi", "CookPopularInstaller.MSI\CookPopularInstaller.Msi.wixproj", "{0A1F5CB2-364B-4345-9DD0-077AEB357413}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DesktopInstaller.Exe", "DesktopInstaller.Exe\DesktopInstaller.Exe.wixproj", "{E313975F-94C9-44F5-AD25-1E26EFFCFA1E}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "CookPopularInstaller.Exe", "CookPopularInstaller.Exe\CookPopularInstaller.Exe.wixproj", "{E313975F-94C9-44F5-AD25-1E26EFFCFA1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

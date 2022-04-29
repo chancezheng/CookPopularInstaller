@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+	<TargetFramework>net461</TargetFramework>
+    <!--<TargetFramework>net5.0-windows</TargetFramework>-->
+    <!--<Nullable>enable</Nullable>-->
+    <UseWPF>true</UseWPF>
+    <StartupObject>CookPopularInstallerUI.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BootstrapperCore">
+	  <!--注意，WPF 项目并不像 WiX 项目一样针对引用的绝对路径进行了属性引用处理,
+	  将绝对路径改成环境变量引用 $(WIX)（注意这里引用的是环境变量，而不是之前的 MSBuild 属性，虽然写法一模一样）-->
+	  <HintPath>$(WIX)\SDK\BootstrapperCore.dll</HintPath>
+	  <!--<HintPath>C:\Program Files (x86)\WiX Toolset v3.11\SDK\BootstrapperCore.dll</HintPath>-->
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -6,8 +6,9 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>e313975f-94c9-44f5-ad25-1e26effcfa1e</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>DesktopInstaller.Exe</OutputName>
+    <OutputName>CookPopularInstaller</OutputName>
     <OutputType>Bundle</OutputType>
+    <Name>CookPopularInstaller.Exe</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -28,9 +29,17 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DesktopInstaller.MSI\DesktopInstaller.Msi.wixproj">
-      <Name>DesktopInstaller.Msi</Name>
+    <ProjectReference Include="..\CookPopularInstaller.MSI\CookPopularInstaller.Msi.wixproj">
+      <Name>CookPopularInstaller.Msi</Name>
       <Project>{0a1f5cb2-364b-4345-9dd0-077aeb357413}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\CookPopularInstallerUI\CookPopularInstallerUI.csproj">
+      <Name>CookPopularInstallerUI</Name>
+      <Project>{f6688334-ad3b-448a-b851-7db4f585e09b}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>

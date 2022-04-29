@@ -1,7 +1,7 @@
-﻿<Application x:Class="CookPopularInstaller.App"
+﻿<Application x:Class="CookPopularInstallerUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CookPopularInstaller"
+             xmlns:local="clr-namespace:CookPopularInstallerUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
