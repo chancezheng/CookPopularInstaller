@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <!--<Nullable>enable</Nullable>-->
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Logo.ico" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<OutputPath>$(ProjectDir)bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<OutputPath>$(ProjectDir)bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="CookPopularControl" Version="1.0.2-dev-20220104" />
+  </ItemGroup>
+ 
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+	<Message Text="生成后事件开始"/>
+	<!--<RemoveDir Directories="d:\tmp" />
+	<CreateItem Include="$(TargetDir)*.*">
+	  <Output TaskParameter="Include" ItemName="CopyFiles" />
+	</CreateItem>
+	<Copy SourceFiles="@(CopyFiles)"
+            DestinationFolder="d:\tmp"/>-->
+	<Message Text="生成后事件结束" />
+  </Target>
+
+</Project>

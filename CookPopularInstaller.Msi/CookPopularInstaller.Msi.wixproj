@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>0a1f5cb2-364b-4345-9dd0-077aeb357413</ProjectGuid>
@@ -9,6 +9,8 @@
     <OutputName>CookPopularInstaller</OutputName>
     <OutputType>Package</OutputType>
     <Name>CookPopularInstaller.Msi</Name>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <IncludeSearchPaths>D:\WPFSourceCode\CookPopularInstaller\Publish\</IncludeSearchPaths>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -18,24 +20,56 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CookPopularInstallerUI\CookPopularInstallerUI.csproj">
-      <Name>CookPopularInstallerUI</Name>
-      <Project>{f6688334-ad3b-448a-b851-7db4f585e09b}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
-    </ProjectReference>
+    <Folder Include="Resources" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Directory.wxi" />
+    <Content Include="Resources\dialog_background.png" />
+    <Content Include="Resources\top_banner.png" />
+    <Content Include="update_wxi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\zh-cn.wxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <!-- <ItemGroup> -->
+  <!-- <HarvestDirectory Include="..\Publish"> -->
+  <!-- <DirectoryRefId>INSTALLFOLDER</DirectoryRefId> -->
+  <!-- <ComponentGroupName>DependencyLibrariesGroup</ComponentGroupName> -->
+  <!-- </HarvestDirectory> -->
+  <!-- </ItemGroup> -->
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
   <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
     <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+  </Target>
+  <!-- <PropertyGroup> -->
+  <!-- <PreBuildEvent>&quot;$(WIX)bin\heat.exe&quot; dir &quot;$(SolutionDir)Publish&quot; -out $(ProjectDir)Directory.wxi -gg -gl -sreg -scom -srd -template fragment -dr INSTALLFOLDER -cg DependencyLibrariesGroup -var var.DependencyLibraryDir</PreBuildEvent> -->
+  <!-- </PropertyGroup> -->
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(WIX)bin\heat.exe&quot; dir &quot;$(SolutionDir)Publish&quot; -out Directory.wxi -gg -gl -sreg -scom -srd -template fragment -dr INSTALLFOLDER -cg DependencyLibrariesGroup -var var.DependencyLibraryDir" ConsoleToMSBuild="true" />
+	<Exec Command="&quot;C:\Python39\python.exe&quot; update_wxi.py" ConsoleToMSBuild="true"/>
   </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

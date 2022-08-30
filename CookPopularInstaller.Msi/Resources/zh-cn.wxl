@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WixLocalization Culture="zh-cn" Codepage="936" Language="4" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="ProductName">CookPopularInstaller</String>
+  <String Id="Manufacturer">CookCSharp</String>
+  <String Id="CompanyName">CookCSharp</String>
+  <String Id="RegistryName">CookPopularInstaller</String>
+  <String Id="Title">CookPopularInstaller</String>
+</WixLocalization>

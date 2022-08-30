@@ -1,0 +1,46 @@
+﻿<Window x:Class="TestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TestApp"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Width="800"
+        Height="450">
+
+    <Window.Icon>
+        <DrawingImage>
+            <DrawingImage.Drawing>
+                <GeometryDrawing Brush="{DynamicResource PrimaryThemeBrush}" Geometry="{StaticResource HomePageGeometry}" />
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Icon>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="欢迎试用基于Wix打包的测试应用"
+                       Foreground="OrangeRed"
+                       FontSize="20" FontWeight="DemiBold"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="码云地址："
+                       Foreground="OrangeRed"
+                       FontSize="20"
+                       Margin="0,10"
+                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Hyperlink Click="Hyperlink_Click" NavigateUri="https://gitee.com/cook-csharp/CookPopularInstaller">https://gitee.com/cook-csharp/CookPopularInstaller</Hyperlink>
+            </TextBlock>
+            <TextBlock Text="github地址："
+                       Foreground="OrangeRed"
+                       FontSize="20"
+                       Margin="0,10"
+                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Hyperlink Click="Hyperlink_Click" NavigateUri="https://github.com/chancezheng/CookPopularInstaller">https://github.com/chancezheng/CookPopularInstaller</Hyperlink>
+            </TextBlock>
+            <TextBlock Text="Copyright©2022 By Chance Reserved."
+                       Foreground="OrangeRed"
+                       FontSize="20"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>
