@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WixLocalization Culture="zh-cn" Codepage="936" Language="4" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="HelpTelephone">010-62950616</String>
+  <String Id="HelpUrl">https://gitee.com/chancezheng/cook-popular-installer</String>
+  <String Id="UpdateUrl">https://gitee.com/chancezheng/cook-popular-installer</String>
+  <String Id="AboutUrl">https://gitee.com/chancezheng/cook-popular-installer</String>
+  <String Id="WindowsVersionMessage">软件需要更高版本的windows操作系统！></String>
+</WixLocalization>

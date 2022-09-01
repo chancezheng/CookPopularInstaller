@@ -2,24 +2,39 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
 	 xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
 	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Bundle Name="CookPopularInstaller" Version="1.0.0.0" Manufacturer="CookCSharp" UpgradeCode="e313975f-94c9-44f5-ad25-1e26effcfa1e">
-	<!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
-	  <bal:WixStandardBootstrapperApplication LicenseFile="" LicenseUrl="" ThemeFile="" LogoFile=""/>	
-	</BootstrapperApplicationRef>-->
+
+  <Bundle Name="!(bind.packageName.CookPopularInstaller.Msi)" Version="!(bind.packageVersion.CookPopularInstaller.Msi)" 
+		  Manufacturer="!(bind.packageManufacturer.CookPopularInstaller.Msi)"
+		  HelpTelephone="!(loc.HelpTelephone)" HelpUrl="!(loc.HelpUrl)" UpdateUrl="!(loc.UpdateUrl)" AboutUrl="!(loc.AboutUrl)"
+		  Compressed="yes" IconSourceFile="..\Resources\Images\logo.ico"
+		  Copyright="Copyright © 2022 [Bundle/@Manufacturer]. All rights reserved."
+		  DisableRemove="no" DisableModify="no" DisableRepair="no"
+		  UpgradeCode="e313975f-94c9-44f5-ad25-1e26effcfa1e">
 	
-	<WixVariable Id="WixMbaPrereqPackageId" Value=""/>
-	<WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
-	<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
-	  <Payload Name="BootstrapperCore.config" SourceFile="$(var.CookPopularInstallerUI.TargetDir)\$(var.CookPopularInstallerUI.TargetFileName).config"/>
-	  <Payload SourceFile="$(var.CookPopularInstallerUI.TargetPath)" />
+	<bal:Condition Message="!(loc.WindowsVersionMessage)">
+	  <![CDATA[VersionNT >= v6.3]]>
+	</bal:Condition>
+
+	<Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]Chance123"/>
+
+	<!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+	  <bal:WixStandardBootstrapperApplication LogoFile="$(var.CookPopularInstallerUI.ProjectDir)\Logo.ico" LicenseFile="$(var.SolutionDir)\LICENSE"/>	
+	</BootstrapperApplicationRef>-->
+	<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+	  <bal:WixStandardBootstrapperApplication LaunchTarget="[InstallFolder]\TestApp.exe"
+											  LaunchWorkingFolder="[InstallFolder]"
+											  LaunchHidden="yes"
+											  SuppressRepair="no" SuppressOptionsUI="no" ShowVersion="yes"
+											  LogoFile="..\Resources\Images\logo.png" LogoSideFile="..\Resources\Images\logo.png" LicenseFile="..\Resources\Files\license.rtf"/>
 	</BootstrapperApplicationRef>
-
-
-	<Chain>
-	  <!-- TODO: Define the list of chained packages. -->
-	  <!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
-	  <!--<PackageGroupRef Id="NetFx40Redist"/>-->
-	  <MsiPackage Compressed="yes" SourceFile="$(var.CookPopularInstaller.Msi.TargetPath)" DisplayInternalUI="yes" ForcePerMachine="yes"/>
+	
+	<Chain DisableRollback="yes">
+	  <MsiPackage Id="CookPopularInstaller.Msi" Compressed="yes" SourceFile="$(var.CookPopularInstaller.Msi.TargetPath)"
+				  DisplayInternalUI="no" ForcePerMachine="yes" Permanent="no" Visible="no" InstallCondition="VersionNT64">
+		<MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]"/>
+		<!--<MsiProperty Name="InstallFolder" Value="[InstallFolder]"/>-->
+	  </MsiPackage>
 	</Chain>
   </Bundle>
+
 </Wix>
