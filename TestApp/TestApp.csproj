@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <!--<Nullable>enable</Nullable>-->
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+	<OutputType>WinExe</OutputType>
+	<TargetFrameworks>net6.0-windows;net461</TargetFrameworks>
+	<UseWPF>true</UseWPF>
+	<ApplicationIcon>Logo.ico</ApplicationIcon>
+	<SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+	<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Logo.ico" />
+	<Content Include="Logo.ico" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,21 +19,72 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	<OutputPath>$(ProjectDir)bin\Release</OutputPath>
+	<DebugType>none</DebugType>
+	<DebugSymbols>false</DebugSymbols>
+	<AllowedReferenceRelatedFileExtensions>.xml</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="CookPopularControl" Version="1.0.2-dev-20220104" />
+	<None Update="log4net.config">
+	  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</None>
   </ItemGroup>
- 
-  <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
-	<Message Text="生成后事件开始"/>
-	<!--<RemoveDir Directories="d:\tmp" />
-	<CreateItem Include="$(TargetDir)*.*">
-	  <Output TaskParameter="Include" ItemName="CopyFiles" />
+
+  <ItemGroup>
+	<PackageReference Include="CookPopularControl" Version="1.0.2-dev-20220104">
+	  <!--<IncludeAssets>all</IncludeAssets>-->
+	  <!--<ExcludeAssets>runtime</ExcludeAssets>-->
+	  <!--<PrivateAssets>contentFiles;analyzers</PrivateAssets>-->
+	  <!--<GeneratePathProperty>true</GeneratePathProperty>-->
+	</PackageReference>
+  </ItemGroup>
+
+  <!--将引用包输出到指定目录-->
+  <!--<ItemDefinitionGroup>
+	<ReferenceCopyLocalPaths>
+	  <DestinationSubDirectory>Common\</DestinationSubDirectory>
+	</ReferenceCopyLocalPaths>
+  </ItemDefinitionGroup>-->
+
+  <!--生成时使用-->
+  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<CreateItem Include="$(OutputPath)*.*" Exclude="$(OutputPath)*.exe;$(OutputPath)*.exe.config">
+	  <Output TaskParameter="Include" ItemName="MoveFilesAfterBuildNet461" />
 	</CreateItem>
-	<Copy SourceFiles="@(CopyFiles)"
-            DestinationFolder="d:\tmp"/>-->
-	<Message Text="生成后事件结束" />
+	<Move SourceFiles="@(MoveFilesAfterBuildNet461)" DestinationFolder="$(OutputPath)Common" Condition="$(TargetFramework.StartsWith('net4'))"/>
+  
+  	<CreateItem Include="$(OutputPath)*.dll.config">
+	  <Output TaskParameter="Include" ItemName="DeleteFiles" />
+	</CreateItem>
+	<Delete Files="@(DeleteFiles)" Condition="$(TargetFramework.StartsWith('net6'))"/>
+	
+	<CreateItem Include="$(TargetDir)*.*" Exclude="$(TargetDir)*.exe">
+	  <Output TaskParameter="Include" ItemName="MoveFilesAfterBuildNet6" />
+	</CreateItem>
+	<Move SourceFiles="@(MoveFilesAfterBuildNet6)" DestinationFolder="$(TargetDir)Common" Condition="$(TargetFramework.StartsWith('net6'))"/>
+  </Target>-->
+ 
+  <!--发布时使用-->
+  <Target Name="PostBuild" AfterTargets="Publish">
+	<CreateItem Include="$(SolutionDir)Publish\*.*" Exclude="$(SolutionDir)Publish\$(TargetName).exe;$(SolutionDir)Publish\*.exe.config">
+	  <Output TaskParameter="Include" ItemName="MoveFilesAfterPublishNet461" />
+	</CreateItem>
+	<Move SourceFiles="@(MoveFilesAfterPublishNet461)" DestinationFolder="$(SolutionDir)Publish\Common" Condition="$(TargetFramework.StartsWith('net4'))"/>	
+	
+	<CreateItem Include="$(SolutionDir)Publish\*.*" Exclude="$(SolutionDir)Publish\$(TargetName).exe">
+	  <Output TaskParameter="Include" ItemName="MoveFilesAfterPublishNet6" />
+	</CreateItem>	
+  	<Move SourceFiles="@(MoveFilesAfterPublishNet6)" DestinationFolder="$(SolutionDir)Publish\Common" Condition="$(TargetFramework.StartsWith('net6'))"/>
   </Target>
+
+  <!--<Copy SourceFiles="@(ReferenceCopyLocalPaths)"
+		  DestinationFiles="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')"
+		  SkipUnchangedFiles="$(SkipCopyUnchangedFiles)"
+		  OverwriteReadOnlyFiles="$(OverwriteReadOnlyFiles)"
+		  Retries="$(CopyRetryCount)"
+		  RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"
+		  UseHardlinksIfPossible="$(CreateHardLinksForCopyLocalIfPossible)"
+		  UseSymboliclinksIfPossible="$(CreateSymbolicLinksForCopyLocalIfPossible)"
+		  Condition="'$(UseCommonOutputDirectory)' != 'true'"/>-->
 
 </Project>

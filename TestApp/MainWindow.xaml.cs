@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CookPopularControl.Windows;
+using CSharp.Communal.Logger;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace TestApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : NormalWindow
     {
         public MainWindow()
         {
@@ -29,7 +31,7 @@ namespace TestApp
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             var hyperlink = sender as Hyperlink;
-            var uri = hyperlink!.NavigateUri.AbsoluteUri;
+            var uri = hyperlink?.NavigateUri.AbsoluteUri;
             Process.Start(new ProcessStartInfo("explorer", uri));
         }
     }
