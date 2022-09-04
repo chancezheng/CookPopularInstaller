@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookPopularSplashScreen", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{21CBA4A8-7077-4597-BCA1-B10A22834639}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "CookPopularInstallerUI.Exe", "CookPopularInstallerUI.Exe\CookPopularInstallerUI.Exe.wixproj", "{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHostPatcher", "AppHostPatcher\AppHostPatcher.csproj", "{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,22 @@ Global
 		{21CBA4A8-7077-4597-BCA1-B10A22834639}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21CBA4A8-7077-4597-BCA1-B10A22834639}.Release|x86.ActiveCfg = Release|Any CPU
 		{21CBA4A8-7077-4597-BCA1-B10A22834639}.Release|x86.Build.0 = Release|Any CPU
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Debug|Any CPU.Build.0 = Debug|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Debug|x86.ActiveCfg = Debug|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Debug|x86.Build.0 = Debug|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Release|Any CPU.ActiveCfg = Release|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Release|Any CPU.Build.0 = Release|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Release|x86.ActiveCfg = Release|x86
+		{3748A4D2-2CAD-4B58-ABC5-0F6BACAF5D98}.Release|x86.Build.0 = Release|x86
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C9F7FB2-FAF5-4291-AEB1-22CD7D257468}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
