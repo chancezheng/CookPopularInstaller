@@ -1,6 +1,7 @@
 using System.Windows;
 using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 using CookPopularInstallerUI;
+using System.Reflection;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -11,4 +12,4 @@ using CookPopularInstallerUI;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: BootstrapperApplication(typeof(Program))]
+[assembly: BootstrapperApplication(typeof(StandardBootstrapperApplication))]

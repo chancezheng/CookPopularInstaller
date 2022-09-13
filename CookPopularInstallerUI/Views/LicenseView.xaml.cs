@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CookPopularInstallerUI
+namespace CookPopularInstallerUI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// LicenseView.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LicenseView : UserControl
     {
-        public MainWindow()
+        public LicenseView()
         {
             InitializeComponent();
         }

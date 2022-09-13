@@ -1,0 +1,45 @@
+﻿<Window x:Class="CookPopularInstallerUI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:CookPopularInstallerUI.ViewModels"
+        xmlns:local="clr-namespace:CookPopularInstallerUI"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:pc="https://Chance.CookPopularControl/2021/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        mc:Ignorable="d"
+        Title="{StaticResource Title}"
+        Width="580"
+        Height="360"
+        d:DataContext="{d:DesignInstance Type={x:Type vm:MainWindowViewModel}}"
+        pc:WindowAttached.IsDragElement="True"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        Style="{StaticResource MainWindowStyle}">
+
+    <Window.Icon>
+        <DrawingImage>
+            <DrawingImage.Drawing>
+                <GeometryDrawing Brush="{DynamicResource PrimaryThemeBrush}" Geometry="{StaticResource InstallerLogoGeometry}" />
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Icon>
+
+    <behavior:Interaction.Triggers>
+        <behavior:EventTrigger EventName="Closing">
+            <behavior:InvokeCommandAction Command="{Binding ClosingCommand}" PassEventArgsToCommand="True"/>
+        </behavior:EventTrigger>
+    </behavior:Interaction.Triggers>
+
+    <!--<Grid>
+        <Image x:Name="img"
+               Width="200" Height="250"
+               HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static local:RegionToken.MainWindowContentRegion}" Visibility="Collapsed" />
+    </Grid>-->
+
+    <ContentControl prism:RegionManager.RegionName="{x:Static local:RegionToken.MainWindowContentRegion}" />
+
+</Window>

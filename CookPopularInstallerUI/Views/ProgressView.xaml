@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="CookPopularInstallerUI.Views.ProgressView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:CookPopularInstallerUI.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pc="https://Chance.CookPopularControl/2021/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type={x:Type vm:ProgressViewModel}}"
+             d:DesignHeight="360"
+             d:DesignWidth="580"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2"
+               Width="250" Height="224"
+               Source="{Binding BackImage}"
+               VerticalAlignment="Center" />
+        <StackPanel Grid.Row="1" Margin="10,0" VerticalAlignment="Center">
+            <WrapPanel>
+                <!--<TextBlock Text="{Binding CurrentState}" Foreground="#F8F9FA" FontSize="16" />-->
+                <TextBlock Text="{Binding Message}"
+                           Foreground="#F8F9FA"
+                           FontSize="16"
+                           Margin="10,0,0,0" />
+            </WrapPanel>
+            <ProgressBar Height="22"
+                         Foreground="Green"
+                         Background="{StaticResource LinearThemeBrush}"
+                         Value="{Binding Progress}"
+                         Minimum="0" Maximum="100"
+                         Margin="0,10"
+                         pc:LinearProgressBarAssistant.IsShowPercent="True"
+                         Style="{StaticResource LinearProgressBarBaseStyle}" />
+            <!--<Button Width="70" Height="28"
+                    Content="{DynamicResource Cancel}"
+                    Command="{Binding CancelCommand}"
+                    HorizontalAlignment="Right" />-->
+        </StackPanel>
+    </Grid>
+
+</UserControl>
