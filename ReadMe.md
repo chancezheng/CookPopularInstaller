@@ -1,10 +1,32 @@
-### 安装界面分为七步：
+### 为了方便自定义打包工具，本人开发了一个基于Wix开发的免费打包工具，目前是基于VS2022(MSBuild)或Shell脚本生成的安装包，可自定义检测.NetFramewrok版本，自定义操作等，马上会发布界面化操作生成安装包的工具（敬请期待）。有问题可加QQ群交流：658794308，欢迎大家参与开发！
+
+### 安装界面分为六步：
 - 欢迎界面
 - 用户许可
 - 安装组件
-- 安装目录
 - 安装进度
 - 安装完成
+
+### 1.原生Msi安装包
+![Image](Resources/Demos/OriginalUIMsi/original_msi1.png)
+![Image](Resources/Demos/OriginalUIMsi/original_msi2.png)
+![Image](Resources/Demos/OriginalUIMsi/original_msi3.png)
+![Image](Resources/Demos/OriginalUIMsi/original_msi4.png)
+![Image](Resources/Demos/OriginalUIMsi/original_msi5.png)
+
+### 2.原生Exe安装包
+![Image](Resources/Demos/OriginalUIExe/original_exe1.png)
+![Image](Resources/Demos/OriginalUIExe/original_exe2.png)
+![Image](Resources/Demos/OriginalUIExe/original_exe3.png)
+
+### 3.自定义Exe安装包
+![Image](Resources/Demos/CustomUIExe/custom_exe1.png)
+![Image](Resources/Demos/CustomUIExe/custom_exe2.png)
+![Image](Resources/Demos/CustomUIExe/custom_exe3.png)
+![Image](Resources/Demos/CustomUIExe/custom_exe4.png)
+![Image](Resources/Demos/CustomUIExe/custom_exe5.png)
+
+
 ### 查看按照程序运行日志
     生成安装包完成后，进入安装包路径，使用命令"\CookPopularInstaller.exe -l "log.log"可生成日志文件
 
