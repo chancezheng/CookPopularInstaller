@@ -9,8 +9,8 @@ namespace CookPopularInstallerUI
 {
     public class RegisterHelper
     {
-        private static readonly string X86_64 = @"SOFTWARE\WOW6432Node\Microsoft\NCATest";
-        private static readonly string X86 = @"SOFTWARE\Microsoft\NCATest";
+        private static readonly string X86_64 = @"SOFTWARE\WOW6432Node\CookCSharp\CookPopularInstaller";
+        private static readonly string X86 = @"SOFTWARE\CookCSharp\CookPopularInstaller";
         private static readonly string ProductName = "CookPopularInstaller"; //对应注册表中RegistryName
 
         /// <summary>
